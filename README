@@ -1,0 +1,32 @@
+Task 1: Collecting Twitter Data
+In this task, you will collect some Twitter data by using Twitter APIs, especially, using Rest APIs.
+By using a search API, collect 2,500 tweets containing a keyword “donald trump” and another 2,500 tweets containing a keyword “hillary clinton”, and store JSON format. Add following conditions when you use the search API:
+1. A tweet's geolocation should be inside USA.
+2. Tweets should be posted within the past 7 days (26th Jan to 1st Feb 2016)
+3. Tweets should be written in English.
+
+Task 2: Preprocessing the data
+Preprocess the collected dataset by extracting the relevant properties/fields from the JSON format.
+1. Extract following properties from each tweet: created_at, tweet_id, text, user_id, geo,
+coordinates, user_id, user_name, user_location, place, country,friends_count,
+followers_count and language.
+
+
+################################################################################
+First step would be to import the required libraries. We'll be  needing three main libraries ­ "tweepy", "pandas".
+Then we need to get our required data using tweepy.
+­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­
+for tweet in tweepy.Cursor(api.search, q='trump', geocode="38.47935,­ 98.525391,2000.37km" , lang="en",since='2016­02­01',until='2016­02­03').items(2000):
+    results.append(tweet)
+
+where 'q' is the search query.
+	Geocode is the important argument in this search as this helps to get our data within the  mainland USA.
+So, the arguments of geocode are latitude, longitude and radius. From the map of US, we can see that Kansas City is almost at the middle of the country. Thus making that as the center we presume a  circle of radius 2000.37 Km. The total land mass of US is 9,631,420 sq km and the horizontal width is 2680 miles. Thus considering all those factors the radius of the big circle was selected. 
+
+Now I have my data, but as it is in JSON format it will be somewhat  hard to utilize for data analysis. We have to separate out only the data which is required for the analysis.
+
+To do so, we'll use the pandas library of Python. This is one of the  most handy library's for a Data Scientist/Analyst, as it helps in representing data and also analyzing it in a sophisticated and user­ friendly manner.
+
+ADDITIONAL ANALYSIS : WORD FREQUENCY
+We find the most commonly­used words during that day with pandas and nltk. Nltk makes it very easy to process text, and probably saved me from writing a bunch more code. To parse and process twitter texts, we first filter out for stop words, which are high­frequency words that are often irrelevant, such as articles, prepositions, etc (think "to", "the", "also"). Then, we strip all the words in twitter texts  of punctuation marks. This is so that words like "Trump." and “Trump” are not counted as two different words.
+We create a new filtered words list after removing stop words and removing punctuation marks. Again, we have to take account Unicode encoding to make it machine readable. With help from nltk, we can easily plot a frequency distribution of the top 25 words used during the day as it appeared in the tweet.
