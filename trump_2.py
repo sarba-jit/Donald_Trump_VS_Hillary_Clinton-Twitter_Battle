@@ -6,10 +6,10 @@ import matplotlib.pyplot as plt
 # Make the graphs prettier
 pd.set_option('display.mpl_style', 'default')
 
-CONSUMER_KEY = '2LByPhfG5UXMBoqmA6JHzj1Xo'
-CONSUMER_SECRET ='OOJaGz1ued4KuSH2oqWvIZuG6ZtN1hsGtu2mNQhjEUlxSLWjuW'
-OAUTH_TOKEN = '2917984147-4BpKoAVrdYkUydo09Ow9922O1qWxwXbjnlfg1ZE'
-OAUTH_TOKEN_SECRET = 'CFh2VIZQwmQTzUNxEf6orrFEGRPWwiUZ8H6ppbxiZzUiI'
+CONSUMER_KEY = 'xxxx'
+CONSUMER_SECRET ='xxxx'
+OAUTH_TOKEN = 'xxxx'
+OAUTH_TOKEN_SECRET = 'xxxx'
 
 
 #Use tweepy.OAuthHandler to create an authentication using the given key and secret
